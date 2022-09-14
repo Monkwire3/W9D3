@@ -12,7 +12,6 @@ export default class FollowToggle {
   async handleClick(event) {
     // Your code here
     event.preventDefault();
-    console.log(this.toggleButton.dataset.userId)
 
     if (this.followState === "followed") {
       this.unfollow();
@@ -24,34 +23,14 @@ export default class FollowToggle {
   async follow() {
     // Your code here
     const userId = this.toggleButton.dataset.userId;
-
-    return $.ajax({
-      method: 'post',
-      url: `/users/${userId}/follow`,
-      data: {
-        follow: userId
-      },
-      datatype: 'JSON'
-    });
-
-    // fetch(`/users/${userId}/follow`, {
-    //   method: 'post'
-    // }).then((res) => {
-    //   console.log(res)
-    // });
+    const res = await API.followUser(userId)
+    // debugger
+    await res.json()
+  
   }
 
   async unfollow() {
     // Your code here
-
-    return $.ajax({
-      method: 'delete',
-      url: `/users/${userId}/follow`,
-      data: {
-        follow: userId
-      },
-      datatype: 'JSON'
-    });
   }
 
   render() {
