@@ -18,21 +18,26 @@ let followersSelector = ".followers";
 
 
 document.querySelectorAll(followToggleSelector).forEach((el) => {
+  console.log(el)
   new FollowToggle(el);
 });
 
 document.querySelectorAll(infiniteTweetsSelector).forEach((el) => {
+  console.log(el)
   new InfiniteTweets(el);
 });
 
 document.querySelectorAll(usersSearchSelector).forEach((el) => {
+  console.log(el)
   new UsersSearch(el);
 });
 
 document.querySelectorAll(tweetComposeSelector).forEach((el) => {
+  console.log(el)
   new TweetCompose(el);
 });
 
 document.querySelectorAll(followersSelector).forEach((el) => {
+  console.log(el)
   new Followers(el);
 });

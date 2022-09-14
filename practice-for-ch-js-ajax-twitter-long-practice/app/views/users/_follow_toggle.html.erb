@@ -2,7 +2,7 @@
 <form action="<%= user_follow_url(user) %>" method="POST">
   <%= render "shared/auth_token" %>
 
-  <button class="follow-toggle" data-user-id="<%=current_user.id%>" data-follow-state="followed">
+  <button class="follow-toggle" data-user-id="<%=current_user.id%>" data-follow-state="unfollowed">
   
 </button>
 </form>
