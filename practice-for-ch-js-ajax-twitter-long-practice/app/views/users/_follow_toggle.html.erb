@@ -1,6 +1,9 @@
 <% following = current_user.out_follows.include?(@user.id)%>
 
 <form action="<%= user_follow_url(user) %>" method="POST">
+  <% if following %>
+    <input type="hidden" name="_method" value="DELETE">
+  <% end %>
   <%= render "shared/auth_token" %>
 
   <button class="follow-toggle" data-user-id="<%=@user.id%>"data-follow-state="<%= following ? "followed" : "unfollowed"%>"><%= following ? "Unfollow" : "Follow"%>
