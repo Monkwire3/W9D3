@@ -13,7 +13,7 @@ export default class FollowToggle {
     // Your code here
     event.preventDefault();
 
-    if (this.followState === "followed") {
+    if (this.toggleButton.dataset.followState === "followed") {
       this.unfollow();
     } else {
       this.follow();
@@ -21,16 +21,33 @@ export default class FollowToggle {
   };
 
   async follow() {
-    // Your code here
     const userId = this.toggleButton.dataset.userId;
+    this.toggleButton.setAttribute("data-follow-state", "unfollowed")
     const res = await API.followUser(userId)
-    // debugger
-    await res.json()
+
+    if (res.ok) {
+      await res.json();
+      this.toggleButton.setAttribute("data-follow-state", "followed")
+      this.toggleButton.innerText = "Unfollow"
+    } else {
+      throw res;
+    };
   
   }
 
   async unfollow() {
-    // Your code here
+    const userId = this.toggleButton.dataset.userId;
+    this.toggleButton.setAttribute("data-follow-state", "followed")
+    const res = await API.followUser(userId)
+
+    if (res.ok) {
+      await res.json();
+      this.toggleButton.setAttribute("data-follow-state", "unfollowed")
+      this.toggleButton.innerText = "Follow"
+    } else {
+      throw res;
+    };
+
   }
 
   render() {
